@@ -3,7 +3,7 @@ import java.util.*;
 public class Board {
     // This Class contains all elements on the board (Apple and Snake obj's)
 
-    private int appleX,appleY;                  // Current Coordiantes of apple
+    private int appleX,appleY;       // Current Coordiantes of apple
     private Snake snakeOne;          // Contains player one's snake
     private Snake snakeTwo;          // Contains player two's snake
 
@@ -14,7 +14,6 @@ public class Board {
     appleY = 420;
     }
 
-    // Get Methods for Apple and Both Snakes
 
     public int getAppleX() {
         return appleX;
@@ -43,7 +42,6 @@ public class Board {
 
 
 
-    // Helper Methods for Snake One and Two
 
     public void addSnake1(Snake snek){
         snakeOne = snek;
@@ -55,14 +53,11 @@ public class Board {
 
 
 
-    // Misc Methods
 
     public void spawnApple()
     {
         appleX = ((int)(Math.random()*78) * 15) +15;
         appleY = ((int)(Math.random()*45) * 15) +15;
-
-
 
     }
 

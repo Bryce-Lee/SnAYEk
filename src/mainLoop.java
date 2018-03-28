@@ -1,4 +1,4 @@
-import java.util.*;
+
 public class mainLoop implements Runnable{
 
     boolean running=true;
@@ -7,7 +7,7 @@ public class mainLoop implements Runnable{
 
     public void run() {
 
-        int fps = 12; //number of update per second.
+        int fps = 12;                                           //number of update per second.
         double tickPerSecond = 1000000000 / fps;                // Time per frame
         double delta = 0;
         long now;
@@ -28,7 +28,6 @@ public class mainLoop implements Runnable{
 
                 tick();
                 checkLoss(mainC.getsnakeBoard().getSnakeOne(),mainC.getsnakeBoard().getSnakeTwo());
-                System.out.println(running);
                 render();
                 delta--;
             }
@@ -40,25 +39,9 @@ public class mainLoop implements Runnable{
 
 
         private void tick(){
-
-
-
-
-            mainC.getsnakeBoard().getSnakeOne().moveSnake();                    //Move Snake One
-            mainC.getsnakeBoard().getSnakeTwo().moveSnake();                    //Move Snake Two
-            appleEaten(mainC.getsnakeBoard().getSnakeOne(),mainC.getsnakeBoard().getSnakeTwo());
-
-
-            System.out.println("\n");
-            for(Snakelet temp:mainC.getsnakeBoard().getSnakeTwo().snakeList)
-                System.out.println("(" +temp.getX() + " ," + temp.getY() + ")");
-
-        System.out.println("Snake One is Moving in direction: " + mainC.getsnakeBoard().getSnakeOne().direction  );
-        System.out.println("Snake Two is moving in direction: " + mainC.getsnakeBoard().getSnakeTwo().direction  );
-        System.out.println("Snake One growth: " + mainC.getsnakeBoard().getSnakeOne().growth);
-        System.out.println("Snake Two growth: " + mainC.getsnakeBoard().getSnakeTwo().growth);
-
-
+            mainC.getsnakeBoard().getSnakeOne().moveSnake();                                        //Move Snake One
+            mainC.getsnakeBoard().getSnakeTwo().moveSnake();                                        //Move Snake Two
+            appleEaten(mainC.getsnakeBoard().getSnakeOne(),mainC.getsnakeBoard().getSnakeTwo());    //Check for eaten apple
 
         }
         public void appleEaten(Snake one,Snake two)
@@ -81,13 +64,11 @@ public class mainLoop implements Runnable{
                 {
                     if (snakeOne.getX() > 1190 || snakeOne.getX() < 15 || snakeOne.getY() < 15 || snakeOne.getY() > 710) //Checks for out of bounds head
                     {
-                        System.out.println("Player One Out of Bounds");
                         running = false;
                     }
-                    for (int temp3 = 0; temp3 < snakeTwo.snakeList.size(); temp3++) {                   // Iterat
+                    for (int temp3 = 0; temp3 < snakeTwo.snakeList.size(); temp3++) {
                         if (snakeOne.getX() == snakeTwo.snakeList.get(temp3).getX() && snakeOne.getY() == snakeTwo.snakeList.get(temp3).getY()) //Checks head collision w player 2
                         {
-                            System.out.println("Player One Collision");
                             running = false;
                         }
 
@@ -95,23 +76,20 @@ public class mainLoop implements Runnable{
                     if(snakeOne.getX() == snakeOne.snakeList.get(temp1).getX() && snakeOne.getY() == snakeOne.snakeList.get(temp1).getY()) {
                         if(temp1 != 0)
                         {
-                            System.out.println("Player One Collision w self");
                             running = false;
                         }
                     }
                 }
 
-                for(int temp2=0;temp2 < snakeTwo.snakeList.size();temp2+=1)         //Checks loss conditions pertaining to player 2
+                for(int temp2=0;temp2 < snakeTwo.snakeList.size();temp2+=1)     //Checks loss conditions pertaining to player 2
                 {
                     if(snakeTwo.getX() > 1190 || snakeTwo.getX() < 15 || snakeTwo.getY() < 15 || snakeTwo.getY() > 710)  //Checks for out of bound head
                     {
-                        System.out.println("Player Two Out of Bounds");
                         running = false;
                     }
                     for(int temp4 =0;temp4 < snakeOne.snakeList.size();temp4++) {
                         if (snakeTwo.getX() == snakeOne.snakeList.get(temp4).getX() && snakeTwo.getY() == snakeOne.snakeList.get(temp4).getY())    //Checks head collision w player 1
                         {
-                            System.out.println("Player Two Collision");
                             running = false;
                         }
                     }
@@ -119,7 +97,6 @@ public class mainLoop implements Runnable{
                     {
                         if(temp2 != 0)
                         {
-                            System.out.println("Player Two Collided w self");
                             running = false;
                         }
                     }
@@ -127,10 +104,8 @@ public class mainLoop implements Runnable{
 
         }
         private void render(){
-            System.out.println("Position of Snakes are:   One: " + mainC.getsnakeBoard().getSnakeOne().getX() + ", " + mainC.getsnakeBoard().getSnakeOne().getY() +
-                                " Two:  " + mainC.getsnakeBoard().getSnakeTwo().getX() + ", " + mainC.getsnakeBoard().getSnakeTwo().getY() + " \n" );
             mainC.getM().paintComponent(mainC.getM().getGraphics());
-            mainC.getM().drawApple();                                                                                                    //Draws Apple
+            mainC.getM().drawApple();                                                                           //Draws Apple
             mainC.getM().drawSnake( mainC.getsnakeBoard().getSnakeOne(), mainC.getsnakeBoard().getSnakeTwo());  //Draws Snakes
         }
     }

@@ -15,7 +15,6 @@ public class MyPanel extends JPanel implements MouseListener , KeyListener {
         GameState = 0;
         setSize(1200, 800);
         setVisible(true); //it's like calling the repaint method.
-        //drawGrid();
     }
 
 
@@ -107,7 +106,7 @@ public class MyPanel extends JPanel implements MouseListener , KeyListener {
     }
 
     public void toggleColor(int snake,int direction) {                                               // 0 = up 1 = down
-        String[] colors = {"RED", "GREEN", "PINK","ORANGE","YELLOW"};
+        
 
         if (snake == 1) {
             if (direction == 0) {
@@ -178,7 +177,6 @@ public class MyPanel extends JPanel implements MouseListener , KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-    System.out.println("KEY PRESSED BOYOS");
      if(GameState == 0){
         switch (e.getKeyCode())                                //Determines which persons methods need
             {                                                 //to be called and passes needed parameters

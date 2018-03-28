@@ -9,7 +9,6 @@ public class Snake {
     public ArrayList<Snakelet> snakeList;
     public int growth;
     public boolean ready;
-    //private boolean isHead;
 
 
     public Snake()
@@ -19,7 +18,6 @@ public class Snake {
         snakeList.add(new Snakelet(10,10));
         direction = 1;
         growth =0;
-        System.out.println("zzz");
 
     }
 
@@ -68,22 +66,18 @@ public class Snake {
 
         if(direction == 0)                                                  // Snake is moving left
         {
-                //add snakelet to front of current snake
                 snakeList.add(0,new Snakelet(temp.getX() - 15 ,temp.getY()));
         }
         else if(direction == 1)                                             // Snake is moving down
         {
-            //add snakelet to front of current snake
             snakeList.add(0,new Snakelet(temp.getX() ,temp.getY() +15 ));
         }
         else if(direction == 2)                                             // Snake is moving right
         {
-
             snakeList.add(0,new Snakelet(temp.getX() + 15,temp.getY()));
         }
         else                                                                // Snake is moving up
         {
-
             snakeList.add(0,new Snakelet(temp.getX() ,temp.getY() -15 ));
         }
 

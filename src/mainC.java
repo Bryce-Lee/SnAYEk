@@ -1,9 +1,6 @@
 
-import java.awt.*;
 import javax.swing.*;
-import java.util.*;
-import java.io.*;
-import javax.imageio.*;
+
 
 
 
@@ -29,28 +26,19 @@ public class mainC {
 
         //choose color
 
-        snakeBoard = new Board();                           //Create Gameboard
+        snakeBoard = new Board();                                       //Create Gameboard
 
-        snakeBoard.getSnakeOne().snakeColor = "ORANGE";      // Create and Append player one and two to board
-        snakeBoard.getSnakeTwo().snakeColor  = "GREEN";
-
-
-
-        snakeBoard.getSnakeOne().snakeList.get(0).setX(60);           //Set default positions for player 1 and 2
+        snakeBoard.getSnakeOne().snakeList.get(0).setX(60);             //Set default positions for player 1 and 2
         snakeBoard.getSnakeOne().snakeList.get(0).setY(60);
         snakeBoard.getSnakeTwo().snakeList.get(0).setX(600);
         snakeBoard.getSnakeTwo().snakeList.get(0).setY(60);
 
-        mainC.getM().preGame(mainC.getM().getGraphics());
+        mainC.getM().preGame(mainC.getM().getGraphics());               //Start PreGame sequence
 
 
         mainLoop temp = new mainLoop();                                 //Create instance of Main Loop
         Thread t = new Thread(temp);                                    //Add loop to thread
         t.start();                                                      //Start Thread
-
-
-
-
 
 
     }
